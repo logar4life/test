@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  webdriver-app:
+    build: .
+    container_name: webdriver-app
+    ports:
+      - "8000:8000"
+    environment:
+      - CHROME_OPTIONS=--headless --no-sandbox --disable-dev-shm-usage --disable-gpu
+    volumes:
+      # Optional: Mount a directory for output files if needed
+      - ./output:/app/output
+    restart: unless-stopped 
